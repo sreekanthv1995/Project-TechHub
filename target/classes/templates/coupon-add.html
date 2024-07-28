@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Create User</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css">
+  <style>
+      body {
+         margin: 0;
+         font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+         font-size: 1rem;
+         font-weight: 400;
+         line-height: 1.5;
+         color: #ffffff;
+         overflow-x: hidden;
+         padding-right: 0 !important;
+         background-color: #191c24;
+         }
+        .bg-light {
+             background-color: #0c81f50f!important;
+      }
+  </style>
+</head>
+<body>
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <div class="card bg-light">
+        <div class="card-body">
+          <h2 class="text-center mb-4">Create Coupon</h2>
+
+          <form th:action="@{/admin/add/save}" method="post" th:object="${coupon}">
+            <div class="mb-3 ml-5 mr-5">
+              <input type="text" name="couponCode" class="form-control" placeholder="Coupon Code" required th:field="*{couponCode}">
+            </div>
+            <div class="mb-3 ml-5 mr-5">
+              <input type="number" name="discount" class="form-control" placeholder="discount" required th:field="*{discount}">
+            </div>
+            <div class="mb-3 ml-5 mr-5">
+              <input type="number" name="couponStock" class="form-control" placeholder="couponStock" required th:field="*{couponStock}">
+            </div>
+            <div class="mb-3 ml-5 mr-5">
+              <input type="number" name="maxAmount" class="form-control" placeholder="maxAmount" required th:field="*{maxAmount}">
+            </div>
+            <div class="mb-3 ml-5 mr-5">
+              <input type="date" name="couponStock" class="form-control"  required th:field="*{expiryDate}">
+            </div>
+            <div class="mb-3 ml-5 mr-5">
+              <input type="number" name="cartAmount" class="form-control" placeholder="cartAmount" required th:field="*{cartAmount}">
+            </div>
+
+            <!-- Submit button -->
+            <div class="mb-3 pl-5 pr-5">
+              <button type="submit" class="btn btn-primary w-100">Create</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

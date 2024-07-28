@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>techHUB-Admin</title>
+    <link rel="stylesheet" href="/assets/vendors/mdi/css/materialdesignicons.min.css">
+    <link rel="stylesheet" href="/assets/vendors/css/vendor.bundle.base.css">
+    <link rel="stylesheet" href="/assets/vendors/jvectormap/jquery-jvectormap.css">
+    <link rel="stylesheet" href="/assets/vendors/flag-icon-css/css/flag-icon.min.css">
+    <link rel="stylesheet" href="/assets/vendors/owl-carousel-2/owl.carousel.min.css">
+    <link rel="stylesheet" href="/assets/vendors/owl-carousel-2/owl.theme.default.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="/assets/css/style.css">
+    <link rel="shortcut icon" href="/assets/images/favicon.png"/>
+
+    <style>
+    .datePicker{
+          display: flex;
+          margin-top: 5rem;
+          justify-content: space-around;
+    }
+    .byDate{
+        background-color: black;
+    }
+
+    .form-control{
+        width:auto;
+    }
+    .form-sec{
+        display: flex;
+        flex-direction: row;
+
+    }
+    .form-group{
+        margin: 0.5rem;
+    }
+    .btn{
+        margin:12px;
+    }
+    .byPeriod{
+        padding-left:10rem;
+        background-color: black;
+    }
+    #timePeriod{
+        width: 10rem;
+        color: white;
+    }
+    .equal-height {
+        display: flex;
+        flex-wrap: wrap;
+    }
+    .box-totalSales{
+        border: 5px solid #383333;
+        padding: 15px;
+        text-align: center;
+    }
+
+    .col-md-3 {
+        flex: 1;
+        margin: 10px;
+    }
+
+    .box {
+        border: 1px solid #726868;
+        padding: 15px;
+        text-align: center;
+    }
+    .graph1{
+        background-color:black;
+        border:solid #292837;
+    }
+    .graph2{
+        background-color:black;
+        border:solid #292837;
+    }
+
+
+    </style>
+
+</head>
+<body>
+<div class="container-scroller">
+    <nav class="sidebar sidebar-offcanvas" id="sidebar">
+        <div class="sidebar-brand-wrapper d-none d-lg-flex align-items-center justify-content-center fixed-top">
+            <a class="sidebar-brand brand-logo" href="index.html">techHUB</a>
+            <a class="sidebar-brand brand-logo-mini" href="index.html"><img src="/assets/images/logo-mini.svg"
+                                                                            alt="logo"/></a>
+        </div>
+        <ul class="nav">
+            <li class="nav-item profile">
+                <div class="profile-desc">
+                    <div class="profile-pic">
+                        <div class="count-indicator">
+                            <span class="count bg-success"></span>
+                        </div>
+                        <div class="profile-name">
+                            <h5 class="mb-0 font-weight-normal">ADMIN</h5>
+                        </div>
+                    </div>
+                    <a href="#" id="profile-dropdown" data-toggle="dropdown"><i class="mdi mdi-dots-vertical"></i></a>
+                    <div class="dropdown-menu dropdown-menu-right sidebar-dropdown preview-list"
+                         aria-labelledby="profile-dropdown">
+                        <a href="#" class="dropdown-item preview-item">
+                            <div class="preview-thumbnail">
+                                <div class="preview-icon bg-dark rounded-circle">
+                                    <i class="mdi mdi-settings text-primary"></i>
+                                </div>
+                            </div>
+                            <div class="preview-item-content">
+                                <p class="preview-subject ellipsis mb-1 text-small">Account settings</p>
+                            </div>
+                        </a>
+                        <div class="dropdown-divider"></div>
+                        <a href="#" class="dropdown-item preview-item">
+                            <div class="preview-thumbnail">
+                                <div class="preview-icon bg-dark rounded-circle">
+                                    <i class="mdi mdi-onepassword  text-info"></i>
+                                </div>
+                            </div>
+                            <div class="preview-item-content">
+                                <p class="preview-subject ellipsis mb-1 text-small">Change Password</p>
+                            </div>
+                        </a>
+                        <div class="dropdown-divider"></div>
+                        <a href="#" class="dropdown-item preview-item">
+                            <div class="preview-thumbnail">
+                                <div class="preview-icon bg-dark rounded-circle">
+                                    <i class="mdi mdi-calendar-today text-success"></i>
+                                </div>
+                            </div>
+                            <div class="preview-item-content">
+                                <p class="preview-subject ellipsis mb-1 text-small">To-do list</p>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </li>
+            <li class="nav-item menu-items">
+                <a class="nav-link" th:href="@{/admin/dashboard}">
+              <span class="menu-icon">
+                <i class="mdi mdi-speedometer"></i>
+              </span>
+                    <span class="menu-title">Dashboard</span>
+                </a>
+            </li>
+            <li class="nav-item menu-items">
+                <a class="nav-link" th:href="@{/admin/categories}">
+              <span class="menu-icon">
+                <i class="mdi mdi-playlist-play"></i>
+              </span>
+                    <span class="menu-title">Categories</span>
+                </a>
+            </li>
+            <li class="nav-item menu-items">
+                <a class="nav-link" th:href="@{/admin/products}">
+              <span class="menu-icon">
+                <i class="mdi mdi-table-large"></i>
+              </span>
+                    <span class="menu-title">Products</span>
+                </a>
+            </li>
+            <li class="nav-item menu-items">
+                <a class="nav-link" th:href="@{/admin/users}">
+              <span class="menu-icon">
+                <i class="mdi mdi-table-large"></i>
+              </span>
+                    <span class="menu-title">Users</span>
+                </a>
+            </li>
+            <li class="nav-item menu-items">
+                <a class="nav-link" th:href="@{/admin/coupons}">
+              <span class="menu-icon">
+                <i class="mdi mdi-table-large"></i>
+              </span>
+                    <span class="menu-title">Coupon</span>
+                </a>
+            </li>
+            <li class="nav-item menu-items">
+                <a class="nav-link" th:href="@{/admin/view-orders}">
+              <span class="menu-icon">
+                <i class="mdi mdi-playlist-play"></i>
+              </span>
+                    <span class="menu-title">Orders</span>
+                </a>
+            </li>
+            <li class="nav-item menu-items">
+                <a class="nav-link" th:href="@{/variant/variantList}">
+              <span class="menu-icon">
+                <i class="mdi mdi-table-large"></i>
+              </span>
+                    <span class="menu-title">Variants</span>
+                </a>
+            </li>
+            <li class="nav-item menu-items">
+                <a class="nav-link" th:href="@{/admin/cancelled-items}">
+              <span class="menu-icon">
+                <i class="mdi mdi-table-large"></i>
+              </span>
+                    <span class="menu-title">Cancellations</span>
+                </a>
+            </li>
+            <li class="nav-item menu-items">
+                <a class="nav-link" th:href="@{/admin/return-items}">
+              <span class="menu-icon">
+                <i class="mdi mdi-table-large"></i>
+              </span>
+                    <span class="menu-title">Returned Items</span>
+                </a>
+            </li>
+            <li class="nav-item menu-items">
+                <a class="nav-link" th:href="@{/admin/stock}">
+              <span class="menu-icon">
+                <i class="mdi mdi-table-large"></i>
+              </span>
+                    <span class="menu-title">Stock</span>
+                </a>
+            </li>
+            <li class="nav-item menu-items">
+                <a class="nav-link" th:href="@{/admin/offer/list}">
+              <span class="menu-icon">
+                <i class="mdi mdi-table-large"></i>
+              </span>offer/list
+                    <span class="menu-title">Offers</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+    <div>
+        <p th:text="${message}"></p>
+    </div>
+    <div class="container ">
+        <div class="row datePicker">
+            <div class="col-md-6 byDate">
+                <form th:action="@{/admin/dashboard/sales/byDate}" method="post">
+                    <div class="form-sec">
+                        <div class="form-group">
+                            <input type="date" id="startDatePicker" th:name="startDate" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <input type="date" id="endDatePicker" th:name="endDate" class="form-control">
+                        </div>
+                        <span><button type="submit" class="btn btn-primary">Show Report</button></span>
+                    </div>
+                </form>
+            </div>
+            <div class="col-md-6 byPeriod">
+                <form th:action="@{/admin/dashboard-sales}" method="post" class="form-inline">
+                    <label for="timePeriod">Select :</label>
+                    <select id="timePeriod" th:name="selectedTimePeriod" class="form-control mr-2">
+                        <option value="DAILY">DAILY</option>
+                        <option value="WEEKLY">WEEKLY</option>
+                        <option value="MONTHLY">MONTHLY</option>
+                    </select>
+                    <button type="submit" class="btn btn-primary">Show Report</button>
+                </form>
+            </div>
+        </div>
+
+        <div class="row equal-height">
+            <div class="col-md-3">
+                <div class="box">
+                    <h3>Today</h3>
+                    <div>
+                        <span>Order Count : </span>
+                        <strong><span th:text="${salesDataForOneDay.totalOrderCount}"></span></strong>
+                    </div>
+                    <div>
+                        <span>Sales ₹</span>
+                        <strong><span th:text="${salesDataForOneDay.totalRevenue}"></span></strong>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="box">
+                    <h3>This Week</h3>
+                    <div>
+                        <span>Order Count : </span>
+                        <strong><span th:text="${salesDataForOneWeek.totalOrderCount}"></span></strong>
+                    </div>
+                    <div>
+                        <span>Sales ₹</span>
+                        <strong><span th:text="${salesDataForOneWeek.totalRevenue}"></span></strong>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="box">
+                    <h3>This Month</h3>
+                    <div>
+                        <span>Order Count : </span>
+                        <strong><span th:text="${salesDataForOneMonth.totalOrderCount}"></span></strong>
+                    </div>
+                    <div>
+                        <span>Sales ₹</span>
+                        <strong><span th:text="${salesDataForOneMonth.totalRevenue}"></span></strong>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="box">
+                    <h3>This Year</h3>
+                    <div>
+                        <span>Order Count : </span>
+                        <strong><span th:text="${salesDataForOneYear.totalOrderCount}"></span></strong>
+                    </div>
+                    <div>
+                        <span>Sales ₹</span>
+                        <strong><span th:text="${salesDataForOneYear.totalRevenue}"></span></strong>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row" style="margin-top:2rem;">
+            <div class="col-md-6 graph1">
+                <canvas id="allTimeSalesChart" width="380" height="200"></canvas>
+            </div>
+
+            <div class="col-md-6 graph2">
+                <select id="timePeriodSelector" th:name="selectedPeriod" class="form-control" style="color: aqua;">
+                    <option value="WEEKLY">W</option>
+                    <option value="DAILY">D</option>
+                    <option value="MONTHLY">M</option>
+                </select>
+                <canvas id="dailySalesChart" width="380" height="200"></canvas>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6" style="margin-top:0.5rem;">
+                <div class="box-totalSales">
+                    <h3>Total Sales</h3>
+                    <div>
+                        <span>Total Order Received :</span>
+                        <strong><span th:text="${getAllSales.totalOrderCount}"></span></strong>
+                    </div>
+                    <div>
+                        <span>Sales ₹</span>
+                        <strong><span th:text="${getAllSales.totalRevenue}"></span></strong>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6" style="margin-top:0.5rem;">
+                <div class="box-totalSales">
+                    <div>
+                        <spa>Order </spa>
+                        <strong><span id="status-DELIVERED"></span></strong>
+                    </div>
+                    <div>
+                        <span>Order </span>
+                        <strong><span id="status-CANCELLED"></span></strong>
+                    </div>
+                    <div>
+                        <span> Order </span>
+                        <strong><span id="status-SHIPPED"></span></strong>
+                    </div>
+                    <div>
+                        <span> Order </span>
+                        <strong><span id="status-PACKED"></span></strong>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- partial -->
+<!--  <div class="container-fluid page-body-wrapper">-->
+<nav class="navbar p-0 fixed-top d-flex flex-row">
+    <div class="navbar-brand-wrapper d-flex d-lg-none align-items-center justify-content-center">
+    </div>
+    <div class="navbar-menu-wrapper flex-grow d-flex align-items-stretch">
+        <form th:action="@{/logout}" method="post" style="display: inline;">
+            <button type="submit" class="btn btn-success" style="margin-left: 55rem;">Logout</button>
+        </form>
+        <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button"
+                data-toggle="offcanvas">
+            <span class="mdi mdi-format-line-spacing"></span>
+        </button>
+    </div>
+</nav>
+<!--  </div>-->
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+
+<script>
+      function getSelectedDates() {
+  const selectedStartDate = document.getElementById("startDatePicker").value;
+  const selectedEndDate = document.getElementById("endDatePicker").value;
+
+  document.getElementById("selectedStartDate").textContent = selectedStartDate;
+  document.getElementById("selectedEndDate").textContent = selectedEndDate;
+}
+
+</script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+<script>
+    fetch('/admin/dashboard/graph')
+        .then(response => response.json())
+        .then(data => {
+        console.log(data)
+            console.log(data)
+            var months = data.monthlyLabels;
+            var amounts = data.monthlyAmounts;
+            console.log(data)
+            var ctx = document.getElementById('allTimeSalesChart').getContext('2d');
+            var allTimeSalesChart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: months,
+                    datasets: [{
+                        label: 'All Time Sales',
+                        data: amounts,
+                        backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                        borderColor: 'rgba(75, 192, 192, 1)',
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    }
+                }
+            });
+        })
+        .catch(error => {
+            console.error('Error fetching data:', error);
+        });
+
+
+function fetchAndRenderSalesGraph(selectedPeriod) {
+    fetch(`/admin/dashboard/daily-graph?selectedPeriod=${selectedPeriod}`)
+        .then(response => response.json())
+        .then(data => {
+            if (data && data.dailyOrderCounts) {
+            console.log("fetch>>",data);
+                var dates = Object.keys(data.dailyOrderCounts);
+                var orderCounts = Object.values(data.dailyOrderCounts);
+
+                var ctx = document.getElementById('dailySalesChart').getContext('2d');
+                new Chart(ctx, {
+                    type: 'line',
+                    data: {
+                        labels: dates,
+                        datasets: [{
+                            label: selectedPeriod,
+                            data: orderCounts,
+                            backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                            borderColor: 'rgba(75, 192, 192, 1)',
+                            borderWidth: 1
+                        }]
+                    },
+                    options: {
+                        scales: {
+                            y: {
+                                beginAtZero: true
+                            }
+                        }
+                    }
+                });
+            } else {
+                console.error('Data or dailyOrderCounts is null or undefined.');
+            }
+        })
+        .catch(error => {
+            console.error('Error fetching data:', error);
+        });
+}
+
+$('#timePeriodSelector').on('change', function () {
+    var selectedPeriod = $(this).val();
+    fetchAndRenderSalesGraph(selectedPeriod);
+});
+var initialSelectedPeriod = $('#timePeriodSelector').val();
+fetchAndRenderSalesGraph(initialSelectedPeriod);
+
+
+
+    // Function to fetch and display status counts
+function fetchAndDisplayStatusCounts() {
+    fetch('/admin/statusCounts')
+        .then(response => response.json())
+        .then(data => {
+        console.log(data)
+            // Access the data and update the admin panel UI
+            for (const status in data) {
+                const count = data[status];
+                // Update your admin panel UI with the status and count
+                const statusElement = document.getElementById(`status-${status}`);
+                if (statusElement) {
+                    statusElement.textContent = `${status}: ${count}`;
+                }
+            }
+        })
+        .catch(error => {
+            console.error('Error fetching data:', error);
+        });
+}
+fetchAndDisplayStatusCounts();
+
+
+</script>
+
+
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#salesReportForm').on('submit', function (e) {
+            e.preventDefault(); // Prevent the default form submission
+
+            var formData = $(this).serialize(); // Serialize the form data
+
+            $.ajax({
+                type: 'POST',
+                url: '/admin/dashboard-sales',
+                data: formData,
+                success: function (data) {
+                    // Update the content of the sales report container
+                    $('#salesReportContainer').html(data);
+                },
+                error: function () {
+                    // Handle errors here
+                    alert('Failed to fetch sales report.');
+                }
+            });
+        });
+    });
+
+</script>
+
+<script src="/assets/vendors/js/vendor.bundle.base.js"></script>
+
+<script src="/assets/vendors/chart.js/Chart.min.js"></script>
+<script src="/assets/vendors/progressbar.js/progressbar.min.js"></script>
+<script src="/assets/vendors/jvectormap/jquery-jvectormap.min.js"></script>
+<script src="/assets/vendors/jvectormap/jquery-jvectormap-world-mill-en.js"></script>
+<script src="/assets/vendors/owl-carousel-2/owl.carousel.min.js"></script>
+
+<script src="/assets/js/off-canvas.js"></script>
+<script src="/assets/js/hoverable-collapse.js"></script>
+<script src="/assets/js/misc.js"></script>
+<script src="/assets/js/settings.js"></script>
+<script src="/assets/js/todolist.js"></script>
+<script src="/assets/js/dashboard.js"></script>
+</body>
+</html>

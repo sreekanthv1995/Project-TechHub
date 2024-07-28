@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Add product</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css">
+  <style>
+      body {
+         margin: 0;
+         font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+         font-size: 1rem;
+         font-weight: 400;
+         line-height: 1.5;
+         color: #ffffff;
+         overflow-x: hidden;
+         padding-right: 0 !important;
+         background-color: #191c24;
+         }
+        .bg-light {
+             background-color: #0c81f50f!important;
+      }
+  </style>
+</head>
+<body>
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <div class="card bg-light">
+        <div class="card-body">
+          <h2 class="text-center mb-4">update Product</h2>
+          <form th:action="@{/admin/products/update}" method="post" class="signup-background" id="createForm">
+            <input type="hidden" name="id" th:field="*{product.id}">
+
+            <div class="mb-3 ml-5 mr-5">
+              <input type="text" class="form-control" placeholder="Enter Product Name"  required th:field="*{product.name}" name="name" >
+            </div>
+            <div class="mb-3 ml-5 mr-5">
+              <input id="description" type="text" name="description" class="form-control"
+                     placeholder="Description" required th:field="*{product.description}">
+            </div>
+
+            <div class="mb-3 ml-5 mr-5 form-group">
+            </div>
+
+            <div class="mb-3 pl-5 pr-5">
+              <button type="submit" value="Create" class="btn btn-primary w-100">update Product</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.bundle.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        crossorigin="anonymous"></script>
+<script>
+  function readURL(input) {
+    if (input.files && input.files[0]) {
+      var reader = new FileReader();
+      reader.onload = function (e) {
+        $('#imagePreview').attr('src', e.target.result).width(100).height(100);
+      }
+      reader.readAsDataURL(input.files[0]);
+    }
+  }
+  $('input[name="productImage"]').change(function () {
+    readURL(this);
+});
+  $(".custom-file-input").on("change", function () {
+    var fileName = $(this).val().split("\\").pop();
+    $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
+  });
+</script>
+
+</body>
+</html>

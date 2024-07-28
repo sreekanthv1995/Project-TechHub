@@ -1,0 +1,645 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>techHUB</title>
+    <link rel="apple-touch-icon" sizes="180x180" href="/img/icon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/img/icon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/img/icon/favicon-16x16.png">
+    <!--    <link rel="manifest" href="/site.webmanifest">-->
+
+    <!-- Google Fonts -->
+    <link href='http://fonts.googleapis.com/css?family=Titillium+Web:400,200,300,700,600' rel='stylesheet'
+          type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Roboto+Condensed:400,700,300' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Raleway:400,100' rel='stylesheet' type='text/css'>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400&family=Ubuntu:wght@300;500&display=swap"
+          rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="/css/font-awesome.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/owl.carousel.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/responsive.css">
+    <style>
+      .user-information a{
+            color:white;
+            text-decoration:none;
+      }
+      .user-information{
+            list-style:none;
+            display: flex;
+            flex-direction: column;
+            flex-wrap: nowrap;
+            align-content: space-between;
+            justify-content: space-evenly;
+            height: 16rem;
+            margin-top: 5rem;
+
+        }
+        .user-information li{
+            color:white;
+            text-decoration:none;
+        }
+        .user_name span{
+            font-size: 16px;
+            font-weight: bold;
+            margin-top: 4rem;
+            color: white;
+        }
+        .dashboard{
+            height:auto;
+            margin-top:3rem;
+            background: rgb(34,193,195);
+            background: linear-gradient(0deg, rgba(34,193,195,1) 0%, rgba(15,15,2,1) 88%);
+        }
+        .main_area{
+            margin-top: 3rem;
+            padding-left: 5rem;
+
+        }
+        .user_name{
+            margin-top:2rem;
+            text-align: center;
+        }
+        .heading{
+            display: flex;
+
+            justify-content: flex-start;
+            align-items: center;
+        }
+        .edit-tag a{
+            color:blue;
+            text-decoration: none;
+            margin-left: 1rem;
+        }
+        .input_area{
+            width:50rem;
+        }
+        .heading h2{
+            font-weight: 900;
+        }
+        .order-card{
+            margin-bottom: 1rem;
+            box-shadow: -3px 6px 3px rgba(0, 0, 0, 0.1);
+        }
+        .delivery{
+          margin-top:2rem;
+          background-color: aliceblue;
+          padding: 7px;
+          width: 17rem;
+        }
+        .delivery h4{
+          font-weight:900;
+        }
+        .sub_headings{
+          font-weight:900;
+          margin-top: 1rem;
+        }
+        .image_preview{
+          margin-left: 2rem;
+          margin-top: 6rem;
+        }
+        .product_name{
+            font-weight: 900;
+            font-size: 17px;
+            margin-left: 19px;
+            margin-top: 2rem;
+        }
+        .variant_name{
+            font-size: 12px;
+            margin-top: 5px;
+            margin-left: 19px;
+        }
+        .variant_price{
+            font-weight: 600;
+            margin-left: 20px;
+            margin-top: 4px;
+        }
+        .status{
+            margin-top: 13rem;
+            margin-left: -4rem;
+            font-weight: 900;
+        }
+        .delivery_address{
+            margin-left: 2rem;
+            margin-top: 3rem;
+        }
+        .cancel_btn{
+            margin-bottom:7rem;
+        }
+        .date_small{
+            font-size: x-small;
+            color: #046004;
+        }
+
+        <!-----status bar------->
+
+
+        @import url('https://fonts.googleapis.com/css2?family=Rubik&display=swap');
+
+
+<!--        :root {-->
+<!--          &#45;&#45;line-border-fill: #3498db;-->
+<!--          &#45;&#45;line-border-empty: #e0e0e0;-->
+<!--        }-->
+
+
+<!--        * {-->
+<!--          padding: 0;-->
+<!--          margin: 0;-->
+<!--          border: 0;-->
+<!--          box-sizing: inherit;-->
+<!--        }-->
+
+<!--        html {-->
+<!--          box-sizing: border-box;-->
+<!--        }-->
+
+<!--        body {-->
+<!--          background: #F3F4F6;-->
+<!--          font-family: "Rubik", sans-serif;-->
+<!--          display: flex;-->
+<!--          flex-direction: column;-->
+<!--          align-items: center;-->
+<!--          justify-content: center;-->
+<!--          height: 100vh;-->
+<!--          overflow: hidden;-->
+<!--          margin: 0;-->
+<!--        }-->
+
+<!--        .container {-->
+<!--          margin-top: 15px;-->
+<!--          text-align: center;-->
+<!--        }-->
+
+        .progress-container::before {
+          content: "";
+          background: var(--line-border-empty);
+          position: absolute;
+          top: 50%;
+          left: 0;
+          transform: translateY(-50%);
+          height: 2px;
+          width: 100%;
+          z-index: -1;
+        }
+
+        .progress-container {
+          display: flex;
+          justify-content: space-between;
+          position: relative;
+          margin-bottom: 25px;
+          max-width: 100%;
+          width: 350px;
+        }
+
+        .progress {
+          background: #109610;
+          position: absolute;
+          top: 50%;
+          left: 0;
+          transform: translateY(-50%);
+          height: 2px;
+          width: 0%;
+          z-index: -1;
+          transition: 3s cubic-bezier(0.71, 0.15, 0.71, 0.29);
+        }
+
+        .circle {
+          background: #109610;
+          color: #999;
+          border-radius: 50%;
+          height: 10px;
+          width: 10px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          border: 3px solid var(--line-border-empty);
+          transition:.5s cubic-bezier(0.25, 0.1, 0.48, 0.62);
+        }
+
+        .circle.active {
+          border-color: var(--line-border-fill);
+        }
+
+        .btn {
+          background-color: var(--line-border-fill);
+          color: #fff;
+          cursor: pointer;
+          font-family: inherit;
+          border: 0;
+          border-radius: 6px;
+          padding: 8px 30px;
+          margin: 5px;
+          font-size: 14px;
+        }
+
+        .btn:active {
+          transform: scale(0.98);
+        }
+
+        .btn:focus {
+          outline: 0;
+        }
+
+        .btn:disabled {
+          background-color: var(--line-border-empty);
+          cursor: not-allowed;
+        }
+        .circle small{
+            margin-bottom: 5rem;
+            text-align: center;
+        }
+        .date_small small{
+            font-size:10px;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+        }
+        .date-container{
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+        .discount-amount{
+            margin-bottom:2rem;
+        }
+
+
+
+    </style>
+</head>
+<body>
+
+<div class="header-area">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8">
+                <div class="user-menu">
+                    <ul>
+                        <li>
+                            <a th:href="@{/user/user-home}"><i class="fa fa-user"></i><span
+                                    th:text="${#strings.toUpperCase(#authentication.name)}"></span></a></li>
+                        <li><a th:href="@{/}"><i class="fa fa-home" aria-hidden="true"></i>Home</a></li>
+                        <li><a th:href="@{/shopPage}">All Products</a>
+                        <li th:if="${#request.isUserInRole('ROLE_USER')}">
+                            <form th:action="@{/logout}" method="post">
+                                <button type="submit" class="fa fa-user"> Logout</button>
+                            </form>
+                        </li>
+                        <li th:unless="${#request.isUserInRole('ROLE_USER')}">
+                            <a th:href="@{/login}"><i class="fa fa-user"></i> Login</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="header-right">
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div> <!-- End header area -->
+
+<div class="site-branding-area">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="logo">
+                    <h1><a th:href="@{/}"><img src="/img/techHUBnew.png"></a></h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<main>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-2 dashboard">
+                <div class="user_name">
+                    <img class="_3X2gOt" height="50px" width="50px" src="/img/profile-pic-male_4811a1.svg">
+                    <div style="color:white;">Hello,</div>
+                    <span th:text="${user.firstName} + ' ' + ${user.lastName}"></span>
+                </div>
+                <ul class="user-information">
+                    <li><a th:href="@{/user/user-home}">Personal Information</a></li>
+                    <li><a th:href="@{/user/wallet}">My Wallet</a></li>
+                    <li><a th:href="@{/user/address}">Manage Address</a></li>
+                    <li><a th:href="@{/cart/cart-items}"> My Cart</a></li>
+                    <li><a th:href="@{/user/my-orders}">My Orders</a></li>
+                </ul>
+            </div>
+            <div class="col-md-3 delivery_address">
+                <div class="heading">
+                    <h2>My Orders</h2></div>
+                <hr>
+                <div class="delivery">
+                    <h4>Delivery Address</h4>
+                </div>
+                <div class="sub_headings"><span th:text="${user.firstName}"></span><span
+                        th:text="${user.lastName}"></span></div>
+                <br>
+                <div><span th:text="${order.address.houseNumberOrName}"></span></div>
+                <div><span th:text="${order.address.area}"></span></div>
+                <div><span th:text="${order.address.city}"></span></div>
+                <div><span th:text="${order.address.state}"></span></div>
+                <div><span th:text="${order.address.pinCode}"></span></div>
+                <div><span th:text="${order.address.landmark}"></span></div>
+                <br>
+                <div class="sub_headings"><span th:text="${user.phoneNumber}"></span></div>
+            </div>
+
+            <div class="col-md-4 main_area" th:each="myOrder : ${order}">
+                <div th:each="orderItem : ${myOrder.orderItems}">
+                    <div class="row">
+                        <div class="col-md-12 image_preview">
+                            <input id="order_id" type="hidden" th:value="${order.id}">
+                            <img width="150" height="150" alt="poster_1_up" class="shop_thumbnail"
+                                 th:src="@{/productImages/{fileName}(fileName=${orderItem.variant.product.images[0].fileName})}">
+                            <div class="product_name"><span th:text="${orderItem.variant.product.name}"></span></div>
+                            <div class="variant_name">[<span th:text="${orderItem.variant.variantName}"></span>]</div>
+                            <div class="variant_price"><span>Amount Paid : </span>₹<span
+                                    th:text="${order.totalPrice}"></span></div>
+                            <div class="variant_price">Payment Mode :<span th:text="${order.paymentMode}"></span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 status">
+                <div class="reason" id="cancelSection" style="display: none;">
+                    <h5><strong>Select Reason for Return/Cancel</strong></h5>
+                    <form th:action="@{/user/cancel-order}" method="post">
+                        <input type="hidden" name="orderId" th:value="${order.id}">
+                        <div class="form-group">
+                            <!--<label for="returnCancelReason"></label>-->
+                            <select class="form-control" id="CancelReason" th:name="selectedReason" required>
+                                <option value="">Select a reason</option>
+                                <option value="OVER_PRICED">High Price</option>
+                                <option value="ORDER_PLACED_BY_MISTAKE">Order Placed By Mistake</option>
+                                <option value="BOUGHT_FROM_SOMEWHERE">Bought from Somewhere</option>
+                                <option value="CHANGED_MY_MIND">Change My Mind</option>
+                                <option value="DELIVERY_TIME_ISSUE">Delivery Time too Long</option>
+                            </select>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </form>
+                </div>
+
+                <div class="reason" id="returnSection" style="display: none;">
+                    <h5><strong>Select Reason for Return/Cancel</strong></h5>
+                    <form th:action="@{/user/return-order}" method="post">
+                        <input type="hidden" name="orderId" th:value="${order.id}">
+                        <div class="form-group">
+                            <select class="form-control" id="returnReason" th:name="selectedReason" required>
+                                <option value="DEFECTIVE">Select a reason</option>
+                                <option value="NOT_WORKING_PERFECTLY">Defective Item/Part</option>
+                                <option value="WRONG_ITEM_RECEIVED">Received Wrong Item</option>
+                                <option value="QUALITY_ISSUE">Quality of product not much expected</option>
+                                <option value="MULTIPLE_ISSUE">I Have Multiple Issue With This Product</option>
+                            </select>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </form>
+                </div>
+
+                <div>
+                    <span th:if="${order.status == T(com.tech_hub.techhub.entity.Status).CANCELLED}" style="color: red;"
+                          th:text="${order.status}"></span>
+                    <span th:if="${order.status == T(com.tech_hub.techhub.entity.Status).RETURN_PENDING}"
+                          style="color: blue;" th:text="${order.status}"></span>
+                    <span th:if="${order.status == T(com.tech_hub.techhub.entity.Status).RETURN_CONFIRMED}"
+                          style="color: green;" th:text="${order.status}"></span>
+                    <span th:if="${order.status == T(com.tech_hub.techhub.entity.Status).RETURNED}"
+                          style="color: green;" th:text="${order.status}"></span>
+
+                </div>
+                <button class="btn-sm btn-primary cancel_btn" type="button" id="cancelReasonBtn"
+                        th:unless="${order.status == T(com.tech_hub.techhub.entity.Status).DELIVERED or
+                                     order.status == T(com.tech_hub.techhub.entity.Status).CANCELLED or
+                                     order.status == T(com.tech_hub.techhub.entity.Status).RETURN_PENDING or
+                                     order.status == T(com.tech_hub.techhub.entity.Status).RETURN_CONFIRMED or
+                                     order.status == T(com.tech_hub.techhub.entity.Status).RETURNED}">Cancel Order
+                </button>
+
+                <button class="btn-sm cancel_btn" type="submit" id="returnReasonBtn"
+                        th:if="${order.status == T(com.tech_hub.techhub.entity.Status).DELIVERED and
+                 !(order.status == T(com.tech_hub.techhub.entity.Status).RETURN_PENDING or
+                   order.status == T(com.tech_hub.techhub.entity.Status).RETURN_CONFIRMED or
+                   order.status == T(com.tech_hub.techhub.entity.Status).RETURNED)}">
+                    Return
+                </button>
+
+
+                <div class="progress-container"
+                     th:if="${order.status != T(com.tech_hub.techhub.entity.Status).CANCELLED and
+                              order.status != T(com.tech_hub.techhub.entity.Status).RETURN_PENDING and
+                              order.status != T(com.tech_hub.techhub.entity.Status).RETURN_CONFIRMED and
+                              order.status != T(com.tech_hub.techhub.entity.Status).RETURNED}">
+                    <div class="progress" id="progress"></div>
+                    <div class="circle active"><small>Order Confirmed</small></div>
+                    <div class="circle"><small>Packed</small></div>
+                    <div class="circle"><small>Shipped</small></div>
+                    <div class="circle"><small>Delivered</small></div>
+                </div>
+                <div class="date-container d-flex"
+                     th:if="${order.status != T(com.tech_hub.techhub.entity.Status).CANCELLED and
+                     order.status != T(com.tech_hub.techhub.entity.Status).RETURN_PENDING and
+                     order.status != T(com.tech_hub.techhub.entity.Status).RETURN_CONFIRMED and
+                     order.status != T(com.tech_hub.techhub.entity.Status).RETURNED}">
+                    <div class="date_small" th:if="${order.orderDate != null}">ordered on<small
+                            th:text="${order.orderDate}"></small></div>
+                    <div class="date_small " th:if="${order.deliveryDate != null}">Delivered on<small
+                            th:text="${order.deliveryDate}"></small></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+<div class="footer-top-area" style="margin-top: 7rem;">
+    <div class="zigzag-bottom"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3 col-sm-6">
+                <div class="footer-about-us">
+                    <h2>techHUB</h2>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perferendis sunt id doloribus vero quam
+                        laborum quas alias dolores blanditiis iusto consequatur, modi aliquid eveniet eligendi iure
+                        eaque ipsam iste, pariatur omnis sint! Suscipit, debitis, quisquam. Laborum commodi veritatis
+                        magni at?</p>
+                    <div class="footer-social">
+                        <a href="#" target="_blank"><i class="fa fa-facebook"></i></a>
+                        <a href="#" target="_blank"><i class="fa fa-twitter"></i></a>
+                        <a href="#" target="_blank"><i class="fa fa-youtube"></i></a>
+                        <a href="#" target="_blank"><i class="fa fa-linkedin"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-3 col-sm-6">
+                <div class="footer-menu">
+                    <h2 class="footer-wid-title">User Navigation </h2>
+                    <ul>
+                        <li><a href="">My account</a></li>
+                        <li><a href="">Order history</a></li>
+                        <li><a href="">Wishlist</a></li>
+                        <li><a href="">Vendor contact</a></li>
+                        <li><a href="">Front page</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="col-md-3 col-sm-6">
+                <div class="footer-menu">
+                    <h2 class="footer-wid-title">Categories</h2>
+                    <ul>
+                        <li><a class="list-group-items">All Products</a></li>
+                    </ul>
+
+                </div>
+            </div>
+
+            <div class="col-md-3 col-sm-6">
+                <div class="footer-newsletter">
+                    <h2 class="footer-wid-title">Newsletter</h2>
+                    <p>Sign up to our newsletter and get exclusive deals you wont find anywhere else straight to your
+                        inbox!</p>
+                    <div class="newsletter-form">
+                        <input type="email" placeholder="Type your email">
+                        <input type="submit" value="Subscribe">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="footer-bottom-area">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8">
+                <div class="copyright">
+                    <p>&copy; 2015 uCommerce. All Rights Reserved. <a href="http://www.freshdesignweb.com"
+                                                                      target="_blank">freshDesignweb.com</a></p>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="footer-card-icon">
+                    <i class="fa fa-cc-discover"></i>
+                    <i class="fa fa-cc-mastercard"></i>
+                    <i class="fa fa-cc-paypal"></i>
+                    <i class="fa fa-cc-visa"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+
+const progress = document.getElementById("progress");
+const stepCircles = document.querySelectorAll(".circle");
+
+// Define a mapping of statuses to steps (percentages)
+const statusToStep = {
+  "CONFIRMED": 1,   // 25%
+  "PACKED": 2,      // 50%
+  "SHIPPED": 3,     // 75%
+  "DELIVERED": 4    // 100%
+};
+
+// Simulate an order status change (replace with actual status from your data)
+
+async function get() {
+    const getId = document.getElementById('order_id')
+    console.log(getId)
+    const getDetails = await fetch('/user/getOrderStatus/' + getId.value)
+    const currStatus = await getDetails.text()
+    update(statusToStep[currStatus]);
+}
+get();
+
+
+// Update the progress bar based on the current status
+function update(currentStep) {
+  stepCircles.forEach((circle, i) => {
+    if (i < currentStep) {
+      circle.classList.add("active");
+    } else {
+      circle.classList.remove("active");
+    }
+  });
+
+  const activeCircles = document.querySelectorAll(".active");
+  progress.style.width =
+    ((activeCircles.length - 1) / (stepCircles.length - 1)) * 100 + "%";
+}
+
+</script>
+<script>
+ document.getElementById('cancelReasonBtn').addEventListener('click', function() {
+    var selectReason = document.getElementById('cancelSection');
+    if (selectReason.style.display === 'none') {
+        selectReason.style.display = 'block';
+    } else {
+        selectReason.style.display = 'none';
+    }
+});
+
+
+</script>
+<script>
+ document.getElementById('returnReasonBtn').addEventListener('click', function() {
+    var selectReason = document.getElementById('returnSection');
+    if (selectReason.style.display === 'none') {
+        selectReason.style.display = 'block';
+    } else {
+        selectReason.style.display = 'none';
+    }
+});
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
+        integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
+        integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"
+        crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://code.jquery.com/jquery.min.js"></script>
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+<script src="/js/owl.carousel.min.js"></script>
+<script src="/js/jquery.sticky.js"></script>
+<script src="/js/jquery.easing.1.3.min.js"></script>
+<script src="/js/main.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
+        integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
+        integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+</body>
+</html>
+

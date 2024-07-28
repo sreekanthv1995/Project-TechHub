@@ -1,0 +1,15 @@
+package com.tech_hub.techhub.entity;
+
+public enum CancelReasons {
+
+    WRONG_ITEM_RECEIVED,
+    CHANGED_MY_MIND,
+    DEFECTIVE,
+    DELIVERY_TIME_ISSUE,
+    BOUGHT_FROM_SOMEWHERE,
+    ORDER_PLACED_BY_MISTAKE,
+    OVER_PRICED,
+    NOT_WORKING_PERFECTLY,
+    QUALITY_ISSUE,
+    MULTIPLE_ISSUE
+}

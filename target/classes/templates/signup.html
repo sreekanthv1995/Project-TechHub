@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sign up</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css">
+
+  <style>
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+      font-size: 1rem;
+      font-weight: 400;
+      line-height: 1.5;
+      color: #ffffff;
+      overflow-x: hidden;
+      padding-right: 0 !important;
+      background-color: #191c24;
+      background-image: url("https://cdn.pixabay.com/photo/2021/07/15/20/52/gadgets-6469387_1280.jpg");
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-position: center;
+    }
+    .bg-light {
+      background-color: #2b333b38!important;
+    }
+    .signup-container {
+      margin-right: 1vw;
+      margin-left: auto;
+    }
+    .field input{
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #000;
+            border-radius: 10px;
+            box-sizing: border-box;
+            background: #00000066;
+</style>
+
+</head>
+<body>
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-6 signup-container">
+      <div class="card bg-light">
+        <div class="card-body field">
+          <h2 class="text-center mb-4">Sign up</h2>
+          <form th:action="@{/signup}" method="POST" class="signup-background" id="createForm">
+            <div class="mb-3 ml-5 mr-5">
+              <input type="text" class="form-control" placeholder="First Name"  name="firstName">
+            </div>
+            <div class="mb-3 ml-5 mr-5">
+              <input type="text" class="form-control" placeholder="Last Name"  name="lastName">
+            </div>
+            <div class="mb-3 ml-5 mr-5">
+              <input type="text" class="form-control" placeholder="Username"  name="username">
+            </div>
+            <div class="mb-3 ml-5 mr-5">
+              <input type="email" class="form-control" placeholder="Email"  name="email">
+            </div>
+            <div class="mb-3 ml-5 mr-5">
+              <input type="number" class="form-control" placeholder="Mobile"  name="phoneNumber">
+            </div>
+            <div class="mb-3 ml-5 mr-5">
+              <input  id="password" type="password" class="form-control" placeholder="Password"  name="password">
+            </div>
+            <div class="mb-3 ml-5 mr-5">
+              <input id="confirmPassword" type="password" class="form-control" placeholder="Confirm Password" name="confirmPassword">
+            </div>
+            <p th:if="${error}" class="text-danger text-center">User name or Email Already Exists!!!</p>
+            <div class="mb-3 pl-5 pr-5">
+              <button type="submit" value="signup" class="btn btn-danger w-100">Signup</button>
+            </div>
+            <p class="text-center">Already have an account? <a th:href="@{/login}">Login here</a></p>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.bundle.min.js"></script>
+<script>
+document.getElementById("createForm").addEventListener("submit", () => {
+    var password = document.getElementById("password").value;
+    var confirmPassword = document.getElementById("confirmPassword").value;
+
+    if (password !== confirmPassword) {
+        alert("Passwords do not match!");
+    }
+});
+</script>
+</body>
+</html>
+
