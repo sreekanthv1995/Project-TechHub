@@ -195,7 +195,7 @@
                                 <div class="col-md-4">
                                     <a class="view-order" th:href="@{'/user/view-order/' + ${order.id}}">
                                         <img width="80" height="80" alt="poster_1_up" class="shop_thumbnail"
-                                             th:src="@{/productImages/{fileName}(fileName=${orderItem.variant.product.images[0].fileName})}">
+                                             th:src="@{{imageUrl}(imageUrl=${orderItem.variant.product.images[0].imageUrl})}">
                                     </a>
                                 </div>
                                 <div class="col-md-4 order_info">

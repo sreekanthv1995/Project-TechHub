@@ -58,12 +58,13 @@
                 <div class="user-menu">
                     <ul>
                         <li>
-                            <a th:href="@{/user/user-home}"><i class="fa fa-user"></i><span
-                                    th:text="${#strings.toUpperCase(#authentication.name)}"></span></a></li>
+                            <a th:href="@{/user/user-home}"><i class="fa fa-user"></i>
+                                <span th:text="${#strings.toUpperCase(#authentication.name)}"></span>
+                            </a>
+                        </li>
                         <li><a th:href="@{/}"><i class="fa fa-home" aria-hidden="true"></i>Home</a></li>
                         <li><a th:href="@{/shopPage}">All Products</a>
                         </li>
-                        <!--<li><a href="/admin"><i class="fa fa-heart"></i> Wishlist</a></li>-->
                         <li><a th:href="@{cart/cart-items}"><i class="fa fa-user"></i> My Cart</a></li>
                         <li th:if="${#request.isUserInRole('ROLE_USER')}">
                             <form th:action="@{/logout}" method="post">
@@ -79,21 +80,18 @@
 
         </div>
     </div>
-</div> <!-- End header area -->
-
+</div>
 <div class="site-branding-area ">
     <div class="container">
         <div class="row">
             <div class="col-sm-6">
                 <div class="logo">
-                    <h1><a th:href="@{/}"><img src="/img/techHUBnew.png"></a></h1>
+                    <h1><a th:href="@{/}"><img src="/img/techHUBnew.png" alt=""></a></h1>
                 </div>
             </div>
         </div>
     </div>
 </div>
-
-
 <div class="maincontent-area">
     <div class="zigzag-bottom"></div>
     <div class="container">
@@ -113,20 +111,10 @@
                                 <div>
                                     <p class="fs- fw-normal" th:text="${product.name}"></p>
                                 </div>
-<!--                                <div>-->
-<!--                                    <a href="#" th:href="@{/shopPage/viewProduct/{id}(id=${product.id})}"-->
-<!--                                       class="btn btn-primary">View</a>-->
-<!--                                </div>-->
                             </div>
-
                         </div>
                     </div>
                 </div>
-<!--                <div class="row">-->
-<!--                    <div class="col-md-12" th:each="productsList:${productsList}">-->
-<!--                        <p>hello offer</p>-->
-<!--                    </div>-->
-<!--                </div>-->
             </div>
         </div>
     </div>
@@ -147,7 +135,6 @@
                     </div>
                 </div>
             </div>
-
             <div class="col-md-3 col-sm-6">
                 <div class="footer-menu">
                     <h2 class="footer-wid-title">User Navigation </h2>
@@ -166,11 +153,9 @@
                     <h2 class="footer-wid-title">Categories</h2>
                     <ul th:each="category:${categories}">
                         <li th:text="${category.categoryName}"></li>
-
                     </ul>
                 </div>
             </div>
-
             <div class="col-md-3 col-sm-6">
                 <div class="footer-newsletter">
                     <h2 class="footer-wid-title">Newsletter</h2>
@@ -186,18 +171,16 @@
             </div>
         </div>
     </div>
-</div> <!-- End footer top area -->
+</div>
 
 <div class="footer-bottom-area">
     <div class="container">
         <div class="row">
             <div class="col-md-8">
                 <div class="copyright">
-                    <p>&copy; 2015 uCommerce. All Rights Reserved. <a href="http://www.freshdesignweb.com"
-                                                                      target="_blank">freshDesignweb.com</a></p>
+                    <p>&copy; 2015 uCommerce. All Rights Reserved. <a href="http://www.freshdesignweb.com" target="_blank">freshDesignweb.com</a></p>
                 </div>
             </div>
-
             <div class="col-md-4">
                 <div class="footer-card-icon">
                     <i class="fa fa-cc-discover"></i>
@@ -208,25 +191,14 @@
             </div>
         </div>
     </div>
-</div> <!-- End footer bottom area -->
+</div>
 
-<!-- Latest jQuery form server -->
 <script src="https://code.jquery.com/jquery.min.js"></script>
-
-<!-- Bootstrap JS form CDN -->
 <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-
-<!-- jQuery sticky menu -->
 <script src="js/owl.carousel.min.js"></script>
 <script src="js/jquery.sticky.js"></script>
-
-<!-- jQuery easing -->
 <script src="js/jquery.easing.1.3.min.js"></script>
-
-<!-- Main Script -->
 <script src="js/main.js"></script>
-
-<!-- Slider -->
 <script type="text/javascript" src="js/bxslider.min.js"></script>
 <script type="text/javascript" src="js/script.slider.js"></script>
 </body>

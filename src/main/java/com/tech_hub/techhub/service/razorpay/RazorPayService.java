@@ -3,14 +3,16 @@ package com.tech_hub.techhub.service.razorpay;
 import com.razorpay.Order;
 import com.razorpay.RazorpayClient;
 import com.tech_hub.techhub.entity.TransactionDetails;
+import lombok.extern.slf4j.Slf4j;
 import org.json.JSONObject;
 import org.springframework.stereotype.Service;
 
 @Service
+@Slf4j
 public class RazorPayService {
 
-    private static final String KEY ="rzp_test_WRgxJfU5kmu19s";
-    private static final String SECRET_KEY = "1LGExVPXyzN6WEyDW7BtjVFg";
+    private static final String KEY ="rzp_test_J4LYX9mptrIIqg";
+    private static final String SECRET_KEY = "XU4WWENN7SVKHOBr6zYKiTU4";
     private static final String CURRENCY = "INR";
 
 
@@ -28,7 +30,7 @@ public class RazorPayService {
             return prepareTransactionDetails(order);
 
         }catch (Exception e){
-            e.printStackTrace();
+            log.error(e.getMessage());
         }
         return null;
     }
