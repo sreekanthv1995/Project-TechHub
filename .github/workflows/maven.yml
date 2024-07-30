@@ -32,7 +32,7 @@ jobs:
     - name: Build & push Docker image
       uses: mr-smithers-excellent/docker-build-push@v5
       with:
-        image: seekanth1995/techhub-ecommerce
+        image: seekanth1995/tech_hub-ecommerce
         tags: latest
         registry: docker.io
         dockerfile: Dockerfile
