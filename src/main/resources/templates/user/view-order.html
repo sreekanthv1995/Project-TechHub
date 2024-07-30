@@ -151,40 +151,6 @@
         @import url('https://fonts.googleapis.com/css2?family=Rubik&display=swap');
 
 
-<!--        :root {-->
-<!--          &#45;&#45;line-border-fill: #3498db;-->
-<!--          &#45;&#45;line-border-empty: #e0e0e0;-->
-<!--        }-->
-
-
-<!--        * {-->
-<!--          padding: 0;-->
-<!--          margin: 0;-->
-<!--          border: 0;-->
-<!--          box-sizing: inherit;-->
-<!--        }-->
-
-<!--        html {-->
-<!--          box-sizing: border-box;-->
-<!--        }-->
-
-<!--        body {-->
-<!--          background: #F3F4F6;-->
-<!--          font-family: "Rubik", sans-serif;-->
-<!--          display: flex;-->
-<!--          flex-direction: column;-->
-<!--          align-items: center;-->
-<!--          justify-content: center;-->
-<!--          height: 100vh;-->
-<!--          overflow: hidden;-->
-<!--          margin: 0;-->
-<!--        }-->
-
-<!--        .container {-->
-<!--          margin-top: 15px;-->
-<!--          text-align: center;-->
-<!--        }-->
-
         .progress-container::before {
           content: "";
           background: var(--line-border-empty);
@@ -370,7 +336,7 @@
                         <div class="col-md-12 image_preview">
                             <input id="order_id" type="hidden" th:value="${order.id}">
                             <img width="150" height="150" alt="poster_1_up" class="shop_thumbnail"
-                                 th:src="@{/productImages/{fileName}(fileName=${orderItem.variant.product.images[0].fileName})}">
+                                 th:src="@{{imageUrl}(imageUrl=${orderItem.variant.product.images[0].imageUrl})}">
                             <div class="product_name"><span th:text="${orderItem.variant.product.name}"></span></div>
                             <div class="variant_name">[<span th:text="${orderItem.variant.variantName}"></span>]</div>
                             <div class="variant_price"><span>Amount Paid : </span>₹<span
