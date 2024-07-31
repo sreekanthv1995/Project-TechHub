@@ -47,7 +47,7 @@ public class EmailUtil {
             <p>Hello,Welcome to techHUB.com</p>
             <p>Your OTP for verification is: %s</p>
             <p>Please use the following link to verify your account:</p>
-            <p><a href="https://localhost:8080/set-password?email=%s" target="blank">Link to set password</a></p>
+            <p><a href="https://www.techhubstore.online/set-password?email=%s" target="blank">Link to set password</a></p>
             <p>Thank you!</p>
         </div>
         """.formatted(email),true);
