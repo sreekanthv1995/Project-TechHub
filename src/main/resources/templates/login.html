@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
 <head>
   <meta charset="UTF-8">
   <title>Login</title>
@@ -126,9 +126,6 @@
       <div th:if="${error}" class="error-message">
         <p th:text="${error}" class="error-text"></p>
       </div>
-<!--      <div>-->
-<!--        <p th:if="${param.error}" class="text-success">User not found with this e mail address please Register.</p>-->
-<!--      </div>-->
         <div th:if="${message}" class="alert alert-success">
             <p th:text="${message}"></p>
         </div>
