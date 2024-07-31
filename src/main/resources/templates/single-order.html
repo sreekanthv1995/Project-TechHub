@@ -189,7 +189,7 @@
                 <h2>Product Details</h2>
                 <div>
                 <img width="150" height="150" alt="poster_1_up" class="shop_thumbnail"
-                     th:src="@{/productImages/{fileName}(fileName=${orderItem.variant.product.images[0].fileName})}">
+                     th:src="@{{imageUrl}(imageUrl=${orderItem.variant.product.images[0].imageUrl})}">
                 </div>
             </div>
             <div class="col-md-3 product_details_details">

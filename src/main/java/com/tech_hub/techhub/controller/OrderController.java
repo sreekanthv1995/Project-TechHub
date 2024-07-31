@@ -32,7 +32,7 @@ public class OrderController {
     public String viewAllOrders(Model model){
         List<Order> allOrders = orderService.findAll();
         List<Order> orders = allOrders.stream().sorted(Comparator
-                .comparing(Order::getOrderDate).reversed()).collect(Collectors.toList());
+                .comparing(Order::getOrderDate)).collect(Collectors.toList());
         Collections.reverse(orders);
         model.addAttribute("orders",orders);
         return"order-management";

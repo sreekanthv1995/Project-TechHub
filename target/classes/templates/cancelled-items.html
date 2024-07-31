@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
 <head>
   <!-- Required meta tags -->
   <meta charset="utf-8">
@@ -8,16 +8,10 @@
   <!-- plugins:css -->
   <link rel="stylesheet" href="/assets/vendors/mdi/css/materialdesignicons.min.css">
   <link rel="stylesheet" href="/assets/vendors/css/vendor.bundle.base.css">
-  <!-- endinject -->
-  <!-- Plugin css for this page -->
   <link rel="stylesheet" href="/assets/vendors/jvectormap/jquery-jvectormap.css">
   <link rel="stylesheet" href="/assets/vendors/flag-icon-css/css/flag-icon.min.css">
   <link rel="stylesheet" href="/assets/vendors/owl-carousel-2/owl.carousel.min.css">
   <link rel="stylesheet" href="/assets/vendors/owl-carousel-2/owl.theme.default.min.css">
-  <!-- End plugin css for this page -->
-  <!-- inject:css -->
-  <!-- endinject -->
-  <!-- Layout styles -->
   <link rel="stylesheet" href="/assets/css/style.css">
   <!-- End layout styles -->
   <link rel="shortcut icon" href="/assets/images/favicon.png" />
@@ -263,12 +257,6 @@
           <div class="card bg-light">
             <div class="card-body">
               <h2 class="text-center mb-4">Cancellation List</h2>
-<!--              <form th:action="@{/variant/search-variant}" method="get" class="mb-4">-->
-<!--                <div class="input-group">-->
-<!--                  <input type="text" name="searchTerm" class="form-control" placeholder="Search by keyword">-->
-<!--                  <button type="submit" class="btn btn-light">Search</button>-->
-<!--                </div>-->
-<!--              </form>-->
               <div class="table-container">
                 <table class="table table-bordered">
                   <thead>
@@ -278,7 +266,6 @@
                     <th>User Name</th>
                     <th>Cancel Reason</th>
                     <th>Cancel Date</th>
-                    <!--<th>Actions</th>-->
                   </tr>
                   </thead>
                   <tbody class="field">
@@ -294,9 +281,6 @@
                   </tbody>
                 </table>
               </div>
-<!--              <div class="bottom-buttons text-center">-->
-<!--                <a th:href="@{/variant/addVariant}" class="btn btn-success">Add Variant</a>-->
-<!--              </div>-->
             </div>
           </div>
         </div>
