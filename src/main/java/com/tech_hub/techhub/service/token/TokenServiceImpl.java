@@ -10,7 +10,6 @@ import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
 
-import javax.mail.MessagingException;
 import java.time.LocalDateTime;
 import java.util.UUID;
 
@@ -20,37 +19,7 @@ public class TokenServiceImpl implements TokenService{
     @Autowired
     private TokenRepository tokenRepository;
     @Autowired
-    private EmailUtil emailUtil;
-    @Autowired
     JavaMailSender javaMailSender;
-    @Autowired
-    UserRepository userRepository;
-
-
-    @Override
-    public String forgotPassword(String email) {
-        UserEntity user = userRepository.findByEmail(email).orElseThrow(
-                () ->new RuntimeException("user not found with email "+email));
-
-        try {
-            emailUtil.sentSetPasswordEmail(email);
-        } catch (MessagingException e) {
-            throw new RuntimeException("unable to set password please try again");
-        }
-
-        return "please check your email for set password";
-    }
-
-    @Override
-    public String setPassword(String email, String newPassword) {
-        UserEntity user = userRepository.findByEmail(email).orElseThrow(
-                () ->new RuntimeException("user not found with email "+email));
-
-        user.setPassword(newPassword);
-        userRepository.save(user);
-
-        return "password updated now you can login";
-    }
 
     @Override
     public String sentEmail(UserEntity user) {
@@ -98,7 +67,7 @@ public class TokenServiceImpl implements TokenService{
 
     private String getResultLink(PasswordResetToken token) {
 
-        String endPointUrl = "http://localhost:8080/resetPassword";
+        String endPointUrl = "https://www.techhubstore.online/resetPassword";
         System.out.println(endPointUrl + "/" + token.getToken());
         return endPointUrl + "/" + token.getToken();
     }

@@ -24,33 +24,12 @@ public class EmailUtil {
         <div>
             <p>Hello,Welcome to techHUB.com</p>
             <p>Your OTP for verification is: %s</p>
-            <p>Please use the following link to verify your account:</p>
+            <p>Follow on instagram:</p>
             <p><a href="https://instagram.com/srikand95?igshid=OGQ5ZDc2ODk2ZA==/verify-account?email=%s&otp=%s" target="blank">Click here to verify</a></p>
             <p>Thank you!</p>
         </div>
         """.formatted(otp, email, otp);
            mimeMessageHelper.setText(emailContent,true);
-
-        System.out.println(mimeMessage);
-        javaMailSender.send(mimeMessage);
-
-    }
-
-    public void sentSetPasswordEmail(String email) throws MessagingException {
-
-        MimeMessage mimeMessage = javaMailSender.createMimeMessage();
-        MimeMessageHelper mimeMessageHelper = new MimeMessageHelper(mimeMessage);
-        mimeMessageHelper.setTo(email);
-        mimeMessageHelper.setSubject("Verify OTP");
-        mimeMessageHelper.setText( """
-        <div>
-            <p>Hello,Welcome to techHUB.com</p>
-            <p>Your OTP for verification is: %s</p>
-            <p>Please use the following link to verify your account:</p>
-            <p><a href="https://www.techhubstore.online/set-password?email=%s" target="blank">Link to set password</a></p>
-            <p>Thank you!</p>
-        </div>
-        """.formatted(email),true);
 
         System.out.println(mimeMessage);
         javaMailSender.send(mimeMessage);

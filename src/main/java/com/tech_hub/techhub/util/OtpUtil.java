@@ -17,8 +17,5 @@ public class OtpUtil {
             otp.append(allowedChars.charAt(index));
         }
         return otp.toString();
-
     }
-
-
 }
