@@ -8,7 +8,7 @@
     <link rel="apple-touch-icon" sizes="180x180" href="/img/icon/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/img/icon/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/img/icon/favicon-16x16.png">
-<!--    <link rel="manifest" href="/site.webmanifest">-->
+    <!--    <link rel="manifest" href="/site.webmanifest">-->
 
     <!-- Google Fonts -->
     <link href='http://fonts.googleapis.com/css?family=Titillium+Web:400,200,300,700,600' rel='stylesheet'
@@ -17,7 +17,8 @@
     <link href='http://fonts.googleapis.com/css?family=Raleway:400,100' rel='stylesheet' type='text/css'>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400&family=Ubuntu:wght@300;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400&family=Ubuntu:wght@300;500&display=swap"
+          rel="stylesheet">
 
     <!-- Bootstrap -->
     <link rel="stylesheet" href="/css/bootstrap.min.css">
@@ -29,8 +30,8 @@
     <link rel="stylesheet" href="/css/owl.carousel.css">
     <link rel="stylesheet" href="/css/style.css">
     <link rel="stylesheet" href="/css/responsive.css">
-<!--    <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>-->
-<!--    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>-->
+    <!--    <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>-->
+    <!--    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>-->
 
     <style>
     .variant-name {
@@ -40,6 +41,7 @@
             font-family: 'Poppins', sans-serif;
             font-family: 'Ubuntu', sans-serif;
         }
+
     </style>
 </head>
 <body>
@@ -147,27 +149,34 @@
                                         <form th:action="@{/cart/update-cart}" method="post">
                                             <input type="hidden" name="id" th:value="${cartItem.variant.id}">
 
-                                            <button class="quantity-button decrease" type="submit" name="newQuantity" th:value="${cartItem.quantity - 1}" data-item-id="1">-</button>
+                                            <button class="quantity-button decrease" type="submit" name="newQuantity"
+                                                    th:value="${cartItem.quantity - 1}" data-item-id="1">-
+                                            </button>
 
-                                            <input type="number" id="quantityItem1" class="item-quantity" th:value="${cartItem.quantity}" data-item-id="1" min="1" max="3"/>
+                                            <input type="number" id="quantityItem1" class="item-quantity"
+                                                   th:value="${cartItem.quantity}" data-item-id="1" min="1" max="3"/>
 
 
-                                            <button class="quantity-button increase" type="submit" name="newQuantity" th:value="${cartItem.quantity + 1}" data-item-id="1">+</button>
+                                            <button class="quantity-button increase" type="submit" name="newQuantity"
+                                                    th:value="${cartItem.quantity + 1}" data-item-id="1">+
+                                            </button>
                                         </form>
                                     </td>
-
                                     <td class="product-subtotal">
-                                        <span class="amount" th:text="${cartItem.variant.price * cartItem.quantity}"></span>
+                                        <span class="amount"
+                                              th:text="${cartItem.variant.price * cartItem.quantity}"></span>
                                     </td>
-
                                     <td>
-                                        <button title="Remove this item" class="btn btn-outline-danger" data-toggle="modal"
-                                           th:data-target="'#confirmModal-' + ${cartItem.id}">×</button>
+                                        <button title="Remove this item" class="btn btn-outline-danger"
+                                                data-toggle="modal"
+                                                th:data-target="'#confirmModal-' + ${cartItem.id}">×
+                                        </button>
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td class="actions text-right" colspan="6" >
-                                        <a th:href="@{/cart/checkout}" type="button" class="btn btn-primary btn-sm" style="margin-left:50rem;">Proceed to checkout</a>
+                                    <td class="actions text-right" colspan="6">
+                                        <a th:href="@{/cart/checkout}" type="button" class="btn btn-primary btn-sm"
+                                           style="margin-left:50rem;">Proceed to checkout</a>
 
                                     </td>
                                 </tr>
@@ -182,7 +191,8 @@
 
                 <div class="card text-center m-3 " style="margin-top: 50px; margin-bottom:50px">
                     <div class="card-header">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="200" height="200" fill="purple" class="bi bi-cart-x-fill" viewBox="0 0 16 16">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="200" height="200" fill="purple"
+                             class="bi bi-cart-x-fill" viewBox="0 0 16 16">
                             <path d="M.5 1a.5.5 0 0 0 0 1h1.11l.401 1.607 1.498 7.985A.5.5 0 0 0 4 12h1a2 2 0 1 0 0 4 2 2 0 0 0 0-4h7a2 2 0 1 0 0 4 2 2 0 0 0 0-4h1a.5.5 0 0 0 .491-.408l1.5-8A.5.5 0 0 0 14.5 3H2.89l-.405-1.621A.5.5 0 0 0 2 1H.5zM6 14a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm7 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0zM7.354 5.646 8.5 6.793l1.146-1.147a.5.5 0 0 1 .708.708L9.207 7.5l1.147 1.146a.5.5 0 0 1-.708.708L8.5 8.207 7.354 9.354a.5.5 0 1 1-.708-.708L7.793 7.5 6.646 6.354a.5.5 0 1 1 .708-.708z"/>
                         </svg>
                     </div>
@@ -301,76 +311,11 @@
     </div>
 </div>
 
-
 <script src="https://code.jquery.com/jquery.min.js"></script>
-<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 <script src="/js/owl.carousel.min.js"></script>
 <script src="/js/jquery.sticky.js"></script>
 <script src="/js/jquery.easing.1.3.min.js"></script>
 <script src="/js/main.js"></script>
 </body>
 </html>
-
-
-
-<!--<script>-->
-<!--document.addEventListener('DOMContentLoaded', () => {-->
-<!--    const decreaseButtons = document.querySelectorAll('.quantity-button.decrease');-->
-<!--    const increaseButtons = document.querySelectorAll('.quantity-button.increase');-->
-
-<!--    decreaseButtons.forEach(button => {-->
-<!--        button.addEventListener('click', () => {-->
-<!--            const itemId = button.getAttribute('data-item-id');-->
-<!--            const currentQuantity = parseInt(-->
-<!--                document.querySelector(`#quantityItem${itemId}`).value-->
-<!--            );-->
-<!--            if (currentQuantity > 1) {-->
-<!--                const newQuantity = currentQuantity - 1;-->
-<!--                updateCartItemQuantity(itemId, newQuantity);-->
-<!--            }-->
-<!--        });-->
-<!--    });-->
-
-<!--    increaseButtons.forEach(button => {-->
-<!--        button.addEventListener('click', () => {-->
-<!--            const itemId = button.getAttribute('data-item-id');-->
-<!--            const currentQuantity = parseInt(-->
-<!--                document.querySelector(`#quantityItem${itemId}`).value-->
-<!--            );-->
-<!--            if (currentQuantity < 3) {-->
-<!--                const newQuantity = currentQuantity + 1;-->
-<!--                updateCartItemQuantity(itemId, newQuantity);-->
-<!--            }-->
-<!--        });-->
-<!--    });-->
-<!--});-->
-
-
-
-
-<!--function updateCartItemQuantity(cartItemId, newQuantity) {-->
-<!--    const requestOptions = {-->
-<!--        method: 'POST',-->
-<!--        headers: {-->
-<!--            'Content-Type': 'application/x-www-form-urlencoded',-->
-<!--        },-->
-<!--        body: `id=${cartItemId}&newQuantity=${newQuantity}`, // Form data-->
-<!--    };-->
-
-<!--    fetch('/cart/update-cart', requestOptions)-->
-<!--        .then(response => {-->
-<!--            if (response.ok) {-->
-<!--                return response.text();-->
-<!--            } else {-->
-<!--                throw new Error(`Error: ${response.status} - ${response.statusText}`);-->
-<!--            }-->
-<!--        })-->
-<!--        .then(data => {-->
-<!--            console.log(data); // Handle success response (data) as needed-->
-<!--            // Update UI if necessary-->
-<!--        })-->
-<!--        .catch(error => {-->
-<!--            console.error('Error updating cart item quantity:', error);-->
-<!--            // Handle errors-->
-<!--        });-->
-<!--}-->

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+<script  th:inline="javascript">
+    var options = {
+        key: [[${transactionDetails.key}]],
+        amount: [[${transactionDetails.amount}]],
+        currency: [[${transactionDetails.currency}]],
+        handler: function (response) {
+        console.log(response)
+            if (response.razorpay_payment_id) {
+                console.log(response.razorpay_payment_id)
+                const paymentId = JSON.stringify(response.razorpay_payment_id);
+                const amount = /*[[${transactionDetails.amount}]]*/
+
+
+                var successUrl = `/user/add/success?amount=${amount}`;
+                window.location.href = successUrl;
+            }
+        },
+    };
+    var rzp = new Razorpay(options);
+    rzp.open();
+</script>
+
+</body>
+</html>

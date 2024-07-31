@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>techHUB</title>
+    <link rel="apple-touch-icon" sizes="180x180" href="/img/icon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/img/icon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/img/icon/favicon-16x16.png">
+    <link href='http://fonts.googleapis.com/css?family=Titillium+Web:400,200,300,700,600' rel='stylesheet'
+          type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Roboto+Condensed:400,700,300' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Raleway:400,100' rel='stylesheet' type='text/css'>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400&family=Ubuntu:wght@300;500&display=swap"
+          rel="stylesheet">
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/css/owl.carousel.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/responsive.css">
+    <style>
+    body{
+        font-size: 14px;
+        line-height: 1.42857143;
+        color: #333;
+        background-color: #fff;
+    }
+      .user-information a{
+            color:white;
+            text-decoration:none;
+      }
+      .user-information{
+            list-style: none;
+            margin-left:-2rem;
+            display: flex;
+            flex-direction: column;
+            flex-wrap: nowrap;
+            justify-content: space-evenly;
+            height: 16rem;
+            margin-top: 5rem;
+
+        }
+        .user-information li{
+            color:white;
+            text-decoration:none;
+        }
+        .user_name span{
+            font-size: 16px;
+            font-weight: bold;
+            margin-top: 4rem;
+            color: white;
+        }
+        .dashboard {
+            background: rgb(34,193,195);
+            background: linear-gradient(0deg, rgba(34,193,195,1) 0%, rgba(15,15,2,1) 88%);
+            height:auto;
+            margin-top: 3rem;
+        }
+        .main_area {
+            margin-top: 3rem;
+            padding-left: 5rem;
+
+        }
+        .user_name{
+            margin-top:2rem;
+            text-align: center;
+        }
+        .heading{
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+        }
+        .edit_tag{
+            margin-top: 3rem;
+        }
+        .input_area{
+            width:50rem;
+        }
+        .heading h2{
+            font-weight: 900;
+        }
+        .order-card{
+            margin-bottom: 1rem;
+            box-shadow: -3px 6px 3px rgba(0, 0, 0, 0.1);
+        }
+        .address_field{
+          font-size: 15px;
+          font-weight: 600;
+        }
+        .edit_tag a{
+          color:blue;
+          text-decoration:none;
+          padding-left: 20rem;
+        }
+        .add_address{
+            color:blue;
+            text-decoration: none;
+        }
+        .add_address:hover{
+            color:white;
+            text-decoration: none;
+        }
+        .edit_address{
+            color:white;
+            text-decoration: none;
+        }
+        .edit_address:hover{
+            color:white;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+
+<div class="header-area">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8">
+                <div class="user-menu">
+                    <ul>
+                        <li>
+                            <a th:href="@{/user/user-home}"><i class="fa fa-user"></i><span
+                                    th:text="${#strings.toUpperCase(#authentication.name)}"></span></a></li>
+                        <li><a th:href="@{/}"><i class="fa fa-home" aria-hidden="true"></i>Home</a></li>
+                        <li><a th:href="@{/shopPage}">All Products</a>
+                        <li th:if="${#request.isUserInRole('ROLE_USER')}">
+                            <form th:action="@{/logout}" method="post">
+                                <button type="submit" class="fa fa-user"> Logout</button>
+                            </form>
+                        </li>
+                        <li th:unless="${#request.isUserInRole('ROLE_USER')}">
+                            <a th:href="@{/login}"><i class="fa fa-user"></i> Login</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="header-right">
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div> <!-- End header area -->
+
+<div class="site-branding-area">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="logo">
+                    <h1><a th:href="@{/}"><img src="/img/techHUBnew.png"></a></h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<main>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-2 dashboard">
+                <div class="user_name">
+                    <img class="_3X2gOt" height="50px" width="50px" src="/img/profile-pic-male_4811a1.svg">
+                    <div style="color:white;">Hello,</div>
+                    <span th:text="${user.firstName} + ' ' + ${user.lastName}"></span>
+                </div>
+                <ul class="user-information">
+                    <li><a th:href="@{/user/user-home}">Personal Information</a></li>
+                    <li><a th:href="@{/user/wallet}">My Wallet</a></li>
+                    <li><a th:href="@{/user/address}">Manage Address</a></li>
+                    <li><a th:href="@{/cart/cart-items}"> My Cart</a></li>
+                    <li><a th:href="@{/user/my-orders}">My Orders</a></li>
+                </ul>
+            </div>
+            <div class="col-md-10 main_area">
+                <div class="heading">
+                    <h2>Addresses</h2>
+                </div>
+                <button class="btn btn-outline-primary"><a class="add_address" th:href="@{'/user/add-address/'+'?editSource=profile'}">Add Address</a></button>
+                <div th:each="address : ${userAddress}">
+                    <div class="card order-card">
+                        <div class="card-body pt-3">
+                            <div class="row d-flex">
+                                <div class="col-md-10">
+                                    <div style="margin-left: 5rem">
+                                        <span class ="address_field"
+                                              th:text="${address.houseNumberOrName +','+ address.area + ',' + address.city}"></span>
+                                    </div>
+                                    <div style="margin-left: 5rem">
+                                        <span class="address_field" th:text="${address.state}"></span>
+                                    </div>
+                                    <div style="margin-left: 5rem">
+                                        <span class="address_field" th:text="${address.pinCode}"></span>
+                                    </div>
+                                    <div style="margin-left: 5rem">
+                                        <span class="address_field" th:text="${address.landmark}"></span>
+                                    </div>
+                                </div>
+                                <div class="col-md-1">
+                                    <button class="btn btn-primary"><a class="edit_address" th:href="@{'/user/edit-address/'+${address.id} +'?editSource=profile'}">Edit</a></button>
+                            </div>
+                                <div class="col-md-1">
+                                    <button class="btn btn-primary" data-toggle="modal" th:data-target="'#deleteAddressModal-' + ${address.id}">Delete</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+<div class="footer-top-area" style="margin-top: 2rem;">
+    <div class="zigzag-bottom"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3 col-sm-6">
+                <div class="footer-about-us">
+                    <h2>techHUB</h2>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perferendis sunt id doloribus vero quam
+                        laborum quas alias dolores blanditiis iusto consequatur, modi aliquid eveniet eligendi iure
+                        eaque ipsam iste, pariatur omnis sint! Suscipit, debitis, quisquam. Laborum commodi veritatis
+                        magni at?</p>
+                    <div class="footer-social">
+                        <a href="#" target="_blank"><i class="fa fa-facebook"></i></a>
+                        <a href="#" target="_blank"><i class="fa fa-twitter"></i></a>
+                        <a href="#" target="_blank"><i class="fa fa-youtube"></i></a>
+                        <a href="#" target="_blank"><i class="fa fa-linkedin"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-3 col-sm-6">
+                <div class="footer-menu">
+                    <h2 class="footer-wid-title">User Navigation </h2>
+                    <ul>
+                        <li><a href="">My account</a></li>
+                        <li><a href="">Order history</a></li>
+                        <li><a href="">Wishlist</a></li>
+                        <li><a href="">Vendor contact</a></li>
+                        <li><a href="">Front page</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="col-md-3 col-sm-6">
+                <div class="footer-menu">
+                    <h2 class="footer-wid-title">Categories</h2>
+                    <ul>
+                        <li><a class="list-group-items">All Products</a></li>
+                    </ul>
+
+                </div>
+            </div>
+
+            <div class="col-md-3 col-sm-6">
+                <div class="footer-newsletter">
+                    <h2 class="footer-wid-title">Newsletter</h2>
+                    <p>Sign up to our newsletter and get exclusive deals you wont find anywhere else straight to your
+                        inbox!</p>
+                    <div class="newsletter-form">
+                        <input type="email" placeholder="Type your email">
+                        <input type="submit" value="Subscribe">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="footer-bottom-area">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8">
+                <div class="copyright">
+                    <p>&copy; 2015 uCommerce. All Rights Reserved. <a href="http://www.freshdesignweb.com"
+                                                                      target="_blank">freshDesignweb.com</a></p>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="footer-card-icon">
+                    <i class="fa fa-cc-discover"></i>
+                    <i class="fa fa-cc-mastercard"></i>
+                    <i class="fa fa-cc-paypal"></i>
+                    <i class="fa fa-cc-visa"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<!-- Modal -->
+<div th:each="address : ${userAddress}" th:id="'deleteAddressModal-' + ${address.id}"  class="modal fade"  tabindex="-1" role="dialog" th:aria-labelledby="'deleteAddressModalLabel-' + ${address.id}" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" th:id="'deleteAddressModalLabel-' + ${address.id}">Delete</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>
+                    Are you sure you want to Delete this Address
+                </p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                <a th:href="@{'/user/delete/address/' + ${address.id}}" class="btn btn-danger btn-sm">Delete</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</body>
+</html>
